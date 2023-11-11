@@ -27,6 +27,11 @@ function NFTDetailsPage() {
   const { data: rentalNFT } = useContractRead(rental_contract, "userOf", [
     nftID,
   ]);
+  const { data: expires } = useContractRead(rental_contract, "userExpires", [
+    nftID,
+  ]);
+
+  //console.log(expires && new Date(expires?.toNumber()*1000));
 
   const { data: directListings } = useValidDirectListings(marketplace, {
     start: 0,
@@ -55,7 +60,7 @@ function NFTDetailsPage() {
           <div className="text-center">{`Loading NFT with id ${nftID} `}</div>
         ) : (
           <>
-            <NFTDetails nft={nft} user={rentalNFT} />
+            <NFTDetails nft={nft} user={rentalNFT} expires={expires} />
 
             {listingID ? (
               <CancelSellingCard
@@ -72,7 +77,7 @@ function NFTDetailsPage() {
                   nft={nft}
                   user={rentalNFT}
                 />
-                <RentNFTCard id={nftID} />
+                <RentNFTCard id={nftID} nft={nft} user={rentalNFT} />
               </>
             )}
           </>

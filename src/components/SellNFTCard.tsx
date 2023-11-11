@@ -58,7 +58,10 @@ const SellNFTCard: FC<SellNFTCardProps> = ({
   };
 
   return (
-    <div className="relative bg-gray-800 text-white p-6 rounded-lg w-full shadow-md mt-4">
+    <div
+      className="relative bg-gray-800 text-white p-6 rounded-lg w-full shadow-md mt-4"
+      style={{ pointerEvents: listingLoading ? "none" : "unset" }}
+    >
       <h1 className="text-2xl font-semibold mb-2 ">Sell NFT</h1>
 
       {user === "0x0000000000000000000000000000000000000000" ||

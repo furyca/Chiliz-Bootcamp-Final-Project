@@ -1,13 +1,16 @@
 import { ThirdwebNftMedia } from "@thirdweb-dev/react";
 import { NFT } from "@thirdweb-dev/sdk";
+import { BigNumber } from "ethers";
 import React, { FC } from "react";
 
 interface NFTProps {
   nft: NFT;
   user: string;
+  expires: BigNumber;
 }
 
-const NFTDetails: FC<NFTProps> = ({ nft, user }) => {
+const NFTDetails: FC<NFTProps> = ({ nft, user, expires }) => {
+  const expirationDate = new Date(expires?.toNumber() * 1000);
   return (
     <div className="bg-gray-800 text-white p-6 rounded-lg shadow-md w-full max-w-2xl">
       <div className="flex w-full justify-between mb-4">
@@ -46,9 +49,20 @@ const NFTDetails: FC<NFTProps> = ({ nft, user }) => {
       <div className="mb-2">
         <strong>Owner:</strong> {nft.owner}
       </div>
-      <div className="mb-2">
-        <strong>User:</strong> {user === '0x0000000000000000000000000000000000000000' ? nft.owner : user}
-      </div>
+      {user === "0x0000000000000000000000000000000000000000" ? (
+        <div className="mb-2">
+          <strong>User: </strong> <span>Not Rented</span>
+        </div>
+      ) : (
+        <>
+          <div className="mb-2">
+            <strong>User: </strong> <span>{user}</span>
+          </div>
+          <div className="mb-2">
+            <strong>Expiration Date:</strong> {expirationDate?.toLocaleString()}
+          </div>
+        </>
+      )}
     </div>
   );
 };
