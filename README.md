@@ -1,6 +1,11 @@
-# NFT Marketplace Complete
+# Rent NFTs Project
 
-Complete version of the NFT Marketplace in CHZ network, using Thirdweb
+Built on top of NFT Marketplace template provided for Chiliz Web3 Bootcamp. In addition to the functionalities of NFT Marketplace project, this project brings out a new functionality using ERC4907 smart contract to allow users to Rent their NFT's for a desired duration.
+
+Can do's by using this repo: 
+  - Rent your NFTs to any user of you desire and choose expiration time.
+  - Mint new NFTs by using ERC4907 smart contract.
+  - List your non-rented NFTs for sale.
 
 ## Configuration Process
 
@@ -19,6 +24,8 @@ Populate the `.env.local` file with the necessary environment variables. These a
 -   `NEXT_PUBLIC_NETWORK`: The specific network name on Thirdweb, e.g., "SpicyChain."
 -   `NEXT_PUBLIC_MARKET_CONTRACT_ADDRESS`: The address of your marketplace smart contract.
 -   `NEXT_PUBLIC_NFT_CONTRACT_ADDRESS`: The address corresponding to your NFT smart contract.
+-   `NEXT_PUBLIC_RENTAL_CONTRACT_ADDRESS`: The address corresponding to your ERC4907 smart contract.
+
 
 ### Step 3: Dependency Installation
 
